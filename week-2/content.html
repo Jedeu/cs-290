@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Week 2</title>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <div class="table-container">
+        <div class="table-container__title">
+            How delicious would these go together? Cell indicates on a 1-10 scale with 10 being absolutely delicious
+        </div>
+        <table>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td>Original milk tea</td>
+                    <td>Taro milk tea</td>
+                    <td>Honeydew milk tea</td>
+                    <td>Chocolate milk tea</td>
+                    <td>Mango milk tea</td>
+                </tr>
+                <tr class="content">
+                    <td>Pearls</td>
+                    <td>10</td>
+                    <td>10</td>
+                    <td>10</td>
+                    <td>10</td>
+                    <td>10</td>
+                </tr>
+                <tr class="content">
+                    <td>Strawberry bursting boba</td>
+                    <td>4</td>
+                    <td>2</td>
+                    <td>6</td>
+                    <td>10</td>
+                    <td>4</td>
+                </tr>
+                <tr class="content">
+                    <td>Coconut jelly</td>
+                    <td>7</td>
+                    <td>5</td>
+                    <td>8</td>
+                    <td>7</td>
+                    <td>9</td>
+                </tr>
+                <tr class="content">
+                    <td>Grass jelly</td>
+                    <td>10</td>
+                    <td>10</td>
+                    <td>10</td>
+                    <td>6</td>
+                    <td>6</td>
+                </tr>
+                <tr class="content">
+                    <td>Coffee jelly</td>
+                    <td>10</td>
+                    <td>8</td>
+                    <td>6</td>
+                    <td>10</td>
+                    <td>4</td>
+                </tr>
+                <tr class="footer">
+                    <td colspan="2">Footer 1</td>
+                    <td colspan="4">Footer 2</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="list">
+        <div>My super creative list</div>
+        <ul>
+            <li>
+                Item number 1
+            </li>
+            <li>
+                Item number 2
+            </li>
+            <li>
+                Item number 3
+            </li>
+        </ul>
+    </div>
+    <div class="outer-content">
+        <div class="inner-content">
+            Here is some content
+        </div>
+    </div>
+
+    <form action="http://web.engr.oregonstate.edu/~zhangluy/tools/class-content/form_tests/check_request.php" method="GET" class="form-get">
+        <fieldset>
+            <legend>Some GET Data</legend>
+            <div class="form-input">
+                <legend>
+                    <label for="text_input">Text here:</label>
+                    <input type="text" name="text_input" id="text_input" required>
+                </legend>
+            </div>
+
+            <div class="form-input">
+                <label for="numerical_input">Number here:</label>
+                <input type="number" name="numerical_input" id="numerical_input" required>
+            </div>
+
+            <div class="form-input">
+                <label for="password_input">Password here:</label>
+                <input type="password" name="password_input" id="password_input" required>
+            </div>
+
+            <div class="form-input">
+                Select between:
+                <div class="form-input__candy">
+                    <input type="radio" name="candy" id="snickers" value="Snickers">
+                    <label for="snickers">Snickers</label>
+                </div>
+                <div class="form-input__candy">
+                    <input type="radio" name="candy" id="skittles" value="Skittles">
+                    <label for="skittles">Skittles</label>
+                </div>
+                <div class="form-input__candy">
+                    <input type="radio" name="candy" id="mentos" value="Mentos">
+                    <label for="mentos">Mentos</label>
+                </div>
+            </div>
+
+            <input type="submit" value="Submit">
+        </fieldset>
+    </form>
+
+    <form action="http://web.engr.oregonstate.edu/~zhangluy/tools/class-content/form_tests/check_request.php" method="POST" class="form-post">
+        <fieldset>
+            <legend>Some POST Data</legend>
+            <div class="form-input">
+                <label for="text_input">Text here:</label>
+                <input type="text" name="text_input" id="text_input" required>
+            </div>
+
+            <div class="form-input">
+                <label for="numerical_input">Number here:</label>
+                <input type="number" name="numerical_input" id="numerical_input" required>
+            </div>
+
+            <div class="form-input">
+                <label for="password_input">Password here:</label>
+                <input type="password" name="password_input" id="password_input" required>
+            </div>
+
+            <div class="form-input">
+                Select between:
+                <div class="form-input__candy">
+                    <input type="radio" name="candy" id="snickers" value="Snickers">
+                    <label for="snickers">Snickers</label>
+                </div>
+                <div class="form-input__candy">
+                    <input type="radio" name="candy" id="skittles" value="Skittles">
+                    <label for="skittles">Skittles</label>
+                </div>
+                <div class="form-input__candy">
+                    <input type="radio" name="candy" id="mentos" value="Mentos">
+                    <label for="mentos">Mentos</label>
+                </div>
+            </div>
+
+            <input type="submit" value="Submit">
+        </fieldset>
+    </form>
+  </body>
+</html>
