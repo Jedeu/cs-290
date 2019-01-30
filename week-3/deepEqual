@@ -1,0 +1,26 @@
+function deepEqual(input1, input2) {
+  if ((input1 && typeof(input1) === "object") && (input2 && typeof(input2) === "object")) {
+    let firstInputKeys = Object.keys(input1);
+    let secondInputKeys = Object.keys(input2);
+
+    if (firstInputKeys.length === secondInputKeys.length) {
+      return firstInputKeys.every((key) => {
+        return deepEqual(input1[key], input2[key]);
+      });
+    } else {
+    return false;
+    }
+  }
+  return input1 === input2;
+}
+
+let obj = {hello: {hi: {moar: "nesting"}}, yes: "dear"};
+
+
+console.log("Works with deep nesting" , deepEqual({hello: {hi: {moar: "nesting"}}, yes: "dear"}, obj));
+
+console.log("compares raw values", deepEqual("yes", "yes"));
+
+console.log("works with arrays", deepEqual(["foobar", ["more"]], ["foobar", ["more"]]));
+
+console.log("Does not mistake null as an object", deepEqual({Why: "not"}, null))
