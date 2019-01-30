@@ -1,3 +1,17 @@
+function Automobile(year, make, model, type) {
+  this.year = year; //integer (ex. 2001, 1995)
+  this.make = make; //string (ex. Honda, Ford)
+  this.model = model; //string (ex. Accord, Focus)
+  this.type = type; //string (ex. Pickup, SUV)
+  this.logMe = (bool) => {
+    if (bool) {
+      console.log(`${this.year} ${this.make} ${this.model} ${this.type}`);
+    } else {
+      console.log(`${this.year} ${this.make} ${this.model}`);
+    }
+  } 
+}
+
 var automobiles = [
   new Automobile(1995, "Honda", "Accord", "Sedan", false),
   new Automobile(1990, "Ford", "F-150", "Pickup", true),
@@ -35,20 +49,6 @@ function describeCars() {
 describeCars();
 
 // Helper methods
-
-function Automobile(year, make, model, type) {
-  this.year = year; //integer (ex. 2001, 1995)
-  this.make = make; //string (ex. Honda, Ford)
-  this.model = model; //string (ex. Accord, Focus)
-  this.type = type; //string (ex. Pickup, SUV)
-  this.logMe = (bool) => {
-    if (bool) {
-      console.log(`${this.year} ${this.make} ${this.model} ${this.type}`);
-    } else {
-      console.log(`${this.year} ${this.make} ${this.model}`);
-    }
-  } 
-}
 
 function sortArr(comparator, arr) {
   // Slice makes sure that newArr doesn't also point to arr, causing
