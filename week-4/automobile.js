@@ -72,7 +72,7 @@ function makeComparator(auto1, auto2) {
   let make2 = auto2.make.toUpperCase();
 
   // Compare the alphabetical order of the strings
-  // Return -1 if make2 comes before make1
+  // Return -1 if make1 comes before make2
   if (make1 < make2) {
     return -1;
   }
