@@ -31,7 +31,7 @@ for (let i = 1; i < 5; i++) {
   let tableHeader = document.createElement("th");
   tableHeader.style.minWidth = "100px";
   // Creates an empty blank header at the top left as per the acceptance criteria
-    tableHeader.innerText = `Header ${i}`;
+    tableHeader.textContent = `Header ${i}`;
   document.getElementsByTagName("tr")[0].appendChild(tableHeader);
 }
 
@@ -46,7 +46,7 @@ for (let j = 1; j < 5; j++) {
   document.getElementsByTagName("tbody")[0].appendChild(tableContentsRow);
   for (let k = 1; k < 5; k++) {
     let tableRowData = document.createElement("td");
-    tableRowData.innerText = `${j}, ${k}`;
+    tableRowData.textContent = `${j}, ${k}`;
     tableRowData.id = `cell-${j}-${k}`;
     tableRowData.style.border = defaultBorder;
     document.getElementById(`table-row-${j}`).appendChild(tableRowData);
@@ -66,7 +66,7 @@ let upButton = document.createElement("div");
 upButton.style.border = "1px solid black";
 upButton.style.padding = "4px";
 upButton.style.margin = "5px";
-upButton.innerText = "Go up"
+upButton.textContent = "Go up"
 upButton.id = "go-up";
 upButton.style.cursor = "pointer";
 upButton.addEventListener("click", () => moveToCell("up"));
@@ -76,7 +76,7 @@ let downButton = document.createElement("div");
 downButton.style.border = "1px solid black";
 downButton.style.padding = "4px";
 downButton.style.margin = "5px";
-downButton.innerText = "Go down"
+downButton.textContent = "Go down"
 downButton.id = "go-down";
 downButton.style.cursor = "pointer";
 downButton.addEventListener("click", () => moveToCell("down"));
@@ -86,7 +86,7 @@ let leftButton = document.createElement("div");
 leftButton.style.border = "1px solid black";
 leftButton.style.padding = "4px";
 leftButton.style.margin = "5px";
-leftButton.innerText = "Go left"
+leftButton.textContent = "Go left"
 leftButton.id = "go-left";
 leftButton.style.cursor = "pointer";
 leftButton.addEventListener("click", () => moveToCell("left"));
@@ -96,7 +96,7 @@ let rightButton = document.createElement("div");
 rightButton.style.border = "1px solid black";
 rightButton.style.padding = "4px";
 rightButton.style.margin = "5px";
-rightButton.innerText = "Go right"
+rightButton.textContent = "Go right"
 rightButton.id = "go-right";
 rightButton.style.cursor = "pointer";
 rightButton.addEventListener("click", () => moveToCell("right"));
@@ -106,7 +106,7 @@ let highlightCellButton = document.createElement("div");
 highlightCellButton.style.border = "1px solid black";
 highlightCellButton.style.padding = "4px";
 highlightCellButton.style.margin = "5px";
-highlightCellButton.innerText = "Mark cell"
+highlightCellButton.textContent = "Mark cell"
 highlightCellButton.id = "highlight-cell";
 highlightCellButton.style.cursor = "pointer";
 highlightCellButton.addEventListener("click", () => highlightCell());
