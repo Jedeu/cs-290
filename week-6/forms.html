@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>title</title>
+  </head>
+  <body>
+    <h4>Open Weather Maps Form</h4>
+    <form>
+        <div>
+            <label for="location">City or Zip Code:</label>
+            <input type="text" id="location" name="location">
+        </div>
+    </form>
+    <div>
+        <button type="submit" id="weather-button">Get weather</button>
+    </div>
+
+    <div id="weather-info">
+        <div id="weather-info__description"></div>
+    </div>
+
+    <h4>HTTP Bin Form</h4>
+    <form>
+        <div>
+            <label for="form-input">Input</label>
+            <input type="text" id="bin-input" name="bin-input">
+        </div>
+    </form>
+    <div>
+        <button type="submit" id="bin-input-button">Submit input</button>
+    </div>
+    <div id="bin-info">
+        <div id="bin-info__description"></div>
+    </div>
+
+    <script src="./index.js"></script>
+  </body>
+</html>
