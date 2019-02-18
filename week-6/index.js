@@ -1,4 +1,4 @@
-const API_KEY = "SECRET";
+const API_KEY = "ef4ba6d774167866fe8a8c05a4f65044";
 
 let weatherButton = document.getElementById("weather-button");
 
@@ -36,7 +36,6 @@ inputButton.addEventListener("click", () => {
   })
 
 });
-
 
 function isZipCode(input) {
   return input.length == 5 && !(isNaN(input))
