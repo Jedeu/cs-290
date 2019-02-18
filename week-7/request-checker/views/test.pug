@@ -3,7 +3,7 @@ html
     title= title
   body
     h1= message
-    if Object.keys(params).length !== 0 
+    if params && Object.keys(params).length !== 0 
       h2 Here are the parameters passed to the request:
       ul
         each val, key in params

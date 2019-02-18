@@ -1,6 +1,10 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = 1338;
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.set('view engine', 'pug');
 
@@ -13,7 +17,7 @@ app.get('/api/v1/_test', (req, res) => {
 });
 
 app.post('/api/v1/_test', (req, res) => {
-    res.render('test', {title: "POST Request", message: "POST request received!"})
+    res.render('test', {title: "POST Request", message: "POST request received!", params: req.body})
 })
 
 app.use(function(req,res){
