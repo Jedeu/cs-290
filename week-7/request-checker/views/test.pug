@@ -1,0 +1,12 @@
+html
+  head
+    title= title
+  body
+    h1= message
+    if Object.keys(params).length !== 0 
+      h2 Here are the parameters passed to the request:
+      ul
+        each val, key in params
+          li= key + ": " + val
+    else
+      h2 No parameters were passed into the request.
