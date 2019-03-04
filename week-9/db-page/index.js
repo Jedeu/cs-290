@@ -1,12 +1,16 @@
 let express = require('express')
-// let mySqlPool = require('dbcon.js');
+let mySqlPool = require('dbcon.js');
 let app = express();
 const port = 1992;
 
 app.set('view engine', 'pug');
 
 app.get('/', (req, res) => {
-  res.render('index', {message: "Hello world!"})
+  let context = {};
+  mySqlPool.query("SELECT * FROM workouts", (err, rows, fields) => {
+    context.results = JSON.stringify(rows);
+    res.render('index', context)
+  });
 });
 
 app.get('/reset-table', (req, res, next) => {
