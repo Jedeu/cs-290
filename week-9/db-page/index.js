@@ -1,5 +1,5 @@
 let express = require('express')
-let mySqlPool = require('dbcon.js');
+let mySqlPool = require('./dbcon.js');
 let app = express();
 const port = 1992;
 
