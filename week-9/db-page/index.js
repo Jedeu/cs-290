@@ -12,6 +12,7 @@ app.set('view engine', 'pug');
 app.get('/', (req, res) => {
   let context = { message: "Welcome to the Fitness Tracker!"};
   mysql.pool.query("SELECT * FROM workouts", (err, rows, fields) => {
+    console.log(rows);
     context.results = JSON.stringify(rows);
     res.render('index', context)
   });
