@@ -6,13 +6,14 @@ const port = 1992;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(express.static('public'));
 
 app.set('view engine', 'pug');
 
 app.get('/', (req, res) => {
   let context = { message: "Welcome to the Fitness Tracker!"};
   mysql.pool.query("SELECT * FROM workouts", (err, rows, fields) => {
-    context.results = JSON.stringify(rows);
+    context.results = rows;
     res.render('index', context)
   });
 });

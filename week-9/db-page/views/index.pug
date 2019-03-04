@@ -1,8 +1,25 @@
 html
   head
     title Week 9 Assignment
+    link(rel='stylesheet', href='/stylesheets/main.css')
   body 
     h1= message
+    form 
+      div
+        label(for="name") Name of the exercise:
+        input(type="text" id="name" name="name")
+        label(for="reps") Number of reps:
+        input(type="text" id="reps" name="reps")
+        label(for="weight") Weight used:
+        input(type="text" id="weight" name="weight")
+        label(for="date") Date:
+        input(type="text" id="date" name="date")
+        label(for="name") Lbs or Kg?
+        select(id="unit-select")
+          option(value="lbs") Lbs
+          option(value="kg") Kg
+      div
+        button(type="submit" id="submit-button") Add new exercise
     table
       thead
         tr
@@ -12,4 +29,12 @@ html
           th Date
           th Unit
       tbody
-      div= results
+        each val in results
+          tr
+            td= val.name
+            td= val.reps
+            td= val.weight
+            td= val.date
+            td= val.lbs == 1 ? 'lbs' : 'kg'
+    script(src="/javascripts/main.js")
+      

@@ -1,0 +1,14 @@
+body {
+    background-color: pink;
+}
+
+table {
+    border: 1px solid black;
+    border-collapse: separate;
+    border-spacing: 50px 0;
+    text-align: center;
+}
+
+thead {
+    border-bottom: 1px solid black;
+}
