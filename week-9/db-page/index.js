@@ -1,15 +1,28 @@
-let express = require('express')
-let mysql = require('./dbcon.js');
-let app = express();
+const express = require('express')
+const mysql = require('./dbcon.js');
+const bodyParser = require('body-parser');
+const app = express();
 const port = 1992;
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.set('view engine', 'pug');
 
 app.get('/', (req, res) => {
-  let context = {};
+  let context = { message: "Welcome to the Fitness Tracker!"};
   mysql.pool.query("SELECT * FROM workouts", (err, rows, fields) => {
     context.results = JSON.stringify(rows);
     res.render('index', context)
+  });
+});
+
+app.post('/', (req, res) => {
+  mysql.pool.query("INSERT INTO workouts SET ?", req.body, (err, results, fields) => {
+    if (err) {
+      res.json({error: err});
+    }
+    res.json(results);
   });
 });
 
@@ -24,7 +37,7 @@ app.get('/reset-table', (req, res, next) => {
     "date DATE,"+
     "lbs BOOLEAN)";
     mysql.pool.query(createString, (err) => {
-      context.results = "Table reset";
+      context.message = "Table reset";
       res.render('index', context);
     });
   });
