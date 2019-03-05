@@ -1,6 +1,7 @@
 const express = require('express')
 const mysql = require('./dbcon.js');
 const bodyParser = require('body-parser');
+let moment = require('moment');
 const app = express();
 const port = 1992;
 
@@ -11,20 +12,45 @@ app.use(express.static('public'));
 app.set('view engine', 'pug');
 
 app.get('/', (req, res) => {
-  let context = { message: "Welcome to the Fitness Tracker!"};
+  let context = {};
   mysql.pool.query("SELECT * FROM workouts", (err, rows, fields) => {
+    rows.forEach((row) => {
+      row.date = moment(row.date).format("MM-DD-YYYY");
+    });
     context.results = rows;
     res.render('index', context)
   });
 });
 
 app.post('/', (req, res) => {
-  mysql.pool.query("INSERT INTO workouts SET ?", req.body, (err, results, fields) => {
-    if (err) {
-      res.json({error: err});
-    }
-    res.json(results);
-  });
+  // We have to fit everything under this post request (no DELETE or PUT allowed apparently)
+  // So we have to parse the action from the POST request to use the right handler
+  if (req.body.action == "add") {
+    const {action, ...newEntry} = req.body;
+    newEntry.date = moment(req.body.date, "MM-DD-YYYY").toDate();
+    mysql.pool.query("INSERT INTO workouts SET ?", newEntry, (err, results, fields) => {
+      if (err) {
+        res.json({error: err});
+      }
+      res.json(results);
+    });
+  } else if (req.body.action == "delete") {
+    mysql.pool.query(`DELETE FROM workouts WHERE id = ${req.body.id}`, (err, results, fields) => {
+      if (err) res.json({error: err})
+
+      res.json(results);
+    })
+  } else if (req.body.action == "edit") {
+    const {action, id, ...entryToUpdate} = req.body;
+    entryToUpdate.date = moment(req.body.date, "MM-DD-YYYY").toDate();
+    mysql.pool.query(`UPDATE workouts SET ? WHERE id = ${req.body.id}`, entryToUpdate, (err, results, fields) => {
+      if (err) {
+        res.json({error: err});
+      }
+      res.json(results);
+    });
+  }
+
 });
 
 app.get('/reset-table', (req, res, next) => {

@@ -3,11 +3,12 @@ html
     title Week 9 Assignment
     link(rel='stylesheet', href='/stylesheets/main.css')
   body 
-    h1= message
+    h1 Welcome to the Fitness Tracker!
+    h2= message
     form 
       div
         label(for="name") Name of the exercise:
-        input(type="text" id="name" name="name")
+        input(type="text" id="name" name="name" required)
         label(for="reps") Number of reps:
         input(type="text" id="reps" name="reps")
         label(for="weight") Weight used:
@@ -28,13 +29,18 @@ html
           th Weight
           th Date
           th Unit
-      tbody
-        each val in results
-          tr
-            td= val.name
-            td= val.reps
-            td= val.weight
-            td= val.date
-            td= val.lbs == 1 ? 'lbs' : 'kg'
+      tbody(id="fitness-table-body")
+        if results
+          each val in results
+            tr(id= val.id)
+              td(id=`${val.id}-name` contenteditable="true")= val.name
+              td(id=`${val.id}-reps` contenteditable="true")= val.reps
+              td(id=`${val.id}-weight` contenteditable="true")= val.weight
+              td(id=`${val.id}-date` contenteditable="true")= val.date
+              td(id=`${val.id}-lbs` contenteditable="true")= val.lbs == 1 ? 'lbs' : 'kg'
+              td 
+                button(type="submit" id="delete-button") Delete this exercise
+              td
+                button(type="submit" id="edit-button") Edit this exercise
     script(src="/javascripts/main.js")
       
