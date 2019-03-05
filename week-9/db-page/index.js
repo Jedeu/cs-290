@@ -26,7 +26,9 @@ app.post('/', (req, res) => {
   // We have to fit everything under this post request (no DELETE or PUT allowed apparently)
   // So we have to parse the action from the POST request to use the right handler
   if (req.body.action == "add") {
-    const {action, ...newEntry} = req.body;
+    let newEntry = Object.assign({}, req.body);
+    delete newEntry["action"];
+
     newEntry.date = moment(req.body.date, "MM-DD-YYYY").toDate();
     mysql.pool.query("INSERT INTO workouts SET ?", newEntry, (err, results, fields) => {
       if (err) {
@@ -41,7 +43,11 @@ app.post('/', (req, res) => {
       res.json(results);
     })
   } else if (req.body.action == "edit") {
-    const {action, id, ...entryToUpdate} = req.body;
+    let entryToUpdate = Object.assign({}, req.body);
+    
+    delete entryToUpdate["action"];
+    delete entryToUpdate["id"];
+
     entryToUpdate.date = moment(req.body.date, "MM-DD-YYYY").toDate();
     mysql.pool.query(`UPDATE workouts SET ? WHERE id = ${req.body.id}`, entryToUpdate, (err, results, fields) => {
       if (err) {
