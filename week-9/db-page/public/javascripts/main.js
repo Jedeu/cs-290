@@ -14,7 +14,8 @@ function handleSubmit(e) {
   let name = document.getElementById("name").value;
 
   if (!name) {
-    console.error("Name cannot be empty");
+    let errorMsg = "Name cannot be empty";
+    showError(errorMsg);
     return;
   }
 
@@ -44,7 +45,8 @@ function handleSubmit(e) {
   .then(res => res.json())
   .then((myJson) => {
     if (myJson.error) {
-      console.error(`Error inserting into database: ${myJson.error.sqlMessage}`)
+      let errorMsg = `Error inserting into database: ${myJson.error.sqlMessage}`;
+      showError(errorMsg);
     } else {
       const {action, ...dataToAppend} = payload;
       dataToAppend.lbs = weightSelect.options[weightSelect.selectedIndex].value
@@ -73,7 +75,8 @@ function handleDelete(e) {
   .then(res => res.json())
   .then((myJson) => {
     if (myJson.error) {
-      console.error(`Error deleting from database: ${myJson.error.sqlMessage}`)
+      let errorMsg = `Error deleting from database: ${myJson.error.sqlMessage}`;
+      showError(errorMsg);
     } else {
       removeRow(id)
     }
@@ -88,7 +91,8 @@ function handleEdit(e) {
   let name = document.getElementById(`${id}-name`).textContent;
 
   if (!name) {
-    console.error("Name cannot be empty");
+    let errorMsg = "Name cannot be empty"
+    showError(errorMsg);
     return;
   }
 
@@ -118,7 +122,8 @@ function handleEdit(e) {
   .then(res => res.json())
   .then((myJson) => {
     if (myJson.error) {
-      console.error(`Error inserting into database: ${myJson.error.sqlMessage}`)
+      let errorMsg = `Error inserting into database: ${myJson.error.sqlMessage}`
+      showError(errorMsg);
     } else {
       console.log(myJson);
     }
@@ -162,4 +167,12 @@ function addNewRow(payload) {
 
 function removeRow(id) {
   document.getElementById(id).remove();
+}
+
+function showError(message) {
+  document.getElementById("result-message").textContent = message;
+}
+
+function showSuccess() {
+  document.getElementById("result-message").textContent = "Operation successful"
 }
