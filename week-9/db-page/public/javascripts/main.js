@@ -52,6 +52,7 @@ function handleSubmit(e) {
       dataToAppend.lbs = weightSelect.options[weightSelect.selectedIndex].value
       dataToAppend.id = myJson.insertId;
       addNewRow(dataToAppend);
+      showSuccess();
     }
   });
 }
@@ -78,7 +79,8 @@ function handleDelete(e) {
       let errorMsg = `Error deleting from database: ${myJson.error.sqlMessage}`;
       showError(errorMsg);
     } else {
-      removeRow(id)
+      removeRow(id);
+      showSuccess();
     }
   });
 }
@@ -125,7 +127,7 @@ function handleEdit(e) {
       let errorMsg = `Error inserting into database: ${myJson.error.sqlMessage}`
       showError(errorMsg);
     } else {
-      console.log(myJson);
+      showSuccess();
     }
   });
 }
