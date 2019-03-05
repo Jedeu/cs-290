@@ -34,7 +34,7 @@ function handleSubmit(e) {
   }
 
 
-  fetch('http://localhost:1992', {
+  fetch('http://flip3.engr.oregonstate.edu:1992/', {
     method: "POST",
     body: JSON.stringify(payload),
     headers: {
@@ -63,7 +63,7 @@ function handleDelete(e) {
     action: "delete"
   };
 
-  fetch('http://localhost:1992', {
+  fetch('http://flip3.engr.oregonstate.edu:1992/', {
     method: "POST",
     body: JSON.stringify(payload),
     headers: {
@@ -108,7 +108,7 @@ function handleEdit(e) {
     action: "edit",
   };
 
-  fetch('http://localhost:1992', {
+  fetch('http://flip3.engr.oregonstate.edu:1992/', {
     method: "POST",
     body: JSON.stringify(payload),
     headers: {
